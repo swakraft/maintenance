@@ -96,6 +96,8 @@ Soumise → Qualifiée → Planifiée → En cours → Livrée → Clôturée
 | Dette technique | Nombre de TODO/FIXME dans le code | Tendance à la baisse | `grep -r TODO src/` |
 | Fréquence de mise à jour des dépendances | Dernière date de mise à jour | < 3 mois | `pip list --outdated` |
 
+Sonar utilisé pour les métriques : https://sonar.swakraft.fr/dashboard?id=TaskManagerLight&codeScope=overall
+
 ### Revue périodique
 
 Une revue qualité est réalisée à intervalle régulier pour :

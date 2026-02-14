@@ -1,0 +1,22 @@
+sonar.host.url=https://sonar.swakraft.fr
+sonar.token=
+
+sonar.projectKey=TaskManagerLight
+sonar.projectName=Task Manager Light
+sonar.projectVersion=1.0
+sonar.sourceEncoding=UTF-8
+
+# Python
+sonar.language=py
+sonar.sources=src
+sonar.tests=tests
+sonar.python.version=3.13
+
+# Couverture de tests (généré par pytest-cov au format XML)
+sonar.python.coverage.reportPaths=coverage.xml
+
+# Exclusions de la couverture (le CLI n'est pas testé unitairement)
+sonar.coverage.exclusions=src/cli.py
+
+# Exclusions de l'analyse (fichiers non pertinents)
+sonar.exclusions=venv/**,tests/fixtures/**

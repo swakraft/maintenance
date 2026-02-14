@@ -1,6 +1,7 @@
 # Task Manager Light
 
 Gestionnaire de tâches minimaliste en Python. Permet de créer, modifier, supprimer des tâches et de les persister au format JSON.
+https://github.com/swakraft/maintenance
 
 ## Structure du projet
 
@@ -16,6 +17,8 @@ tests/
   test_appending_removing.py  # Tests ajout/suppression dans TaskList
   test_memory.py              # Tests de persistance (save/load)
 tasks.json        # Fichier de données (liste de tâches)
+sonar.sh          # Script : tests + analyse SonarQube
+sonar-project.properties  # Configuration SonarQube
 uml.md            # Diagramme de classes PlantUML
 ```
 
@@ -58,6 +61,17 @@ python -m pytest --cov=src
 ```
 
 Ou via l'onglet Test de VSCode (choisir pytest), puis "Exécuter les tests avec couverture".
+
+## Analyse SonarQube
+
+Configurez le fichier `sonar-project.properties.template`. Retirez le .template et fournissez un token.
+Lancer les tests puis l'analyse Sonar en une commande :
+```shell
+./sonar.sh
+```
+Note : peut être chmod +x le fichier shell d'abord.
+
+Prérequis : `sonar-scanner` doit être installé et accessible dans le PATH.
 
 ## Dépendances
 
