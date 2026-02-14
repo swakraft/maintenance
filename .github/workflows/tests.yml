@@ -25,6 +25,11 @@ jobs:
       - name: Run tests with coverage
         run: python -m pytest --cov=src --cov-report=xml --tb=short
 
+      - name: Prepare SonarQube config
+        run: |
+          cp sonar-project.properties.template sonar-project.properties
+          echo "sonar.token=${{ secrets.SONAR_TOKEN }}" >> sonar-project.properties
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
