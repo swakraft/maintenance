@@ -17,8 +17,9 @@ tests/
   test_appending_removing.py  # Tests ajout/suppression dans TaskList
   test_memory.py              # Tests de persistance (save/load)
 tasks.json        # Fichier de données (liste de tâches)
-sonar.sh          # Script : tests + analyse SonarQube
-sonar-project.properties  # Configuration SonarQube
+sonar.sh          # Script local : tests + analyse SonarQube
+sonar-project.properties.template  # Configuration SonarQube (template)
+.github/workflows/tests.yml       # Pipeline CI : tests + Sonar automatique
 uml.md            # Diagramme de classes PlantUML
 ```
 
@@ -64,12 +65,28 @@ Ou via l'onglet Test de VSCode (choisir pytest), puis "Exécuter les tests avec 
 
 ## Analyse SonarQube
 
-Configurez le fichier `sonar-project.properties.template`. Retirez le .template et fournissez un token.
-Lancer les tests puis l'analyse Sonar en une commande :
+### Automatique (CI)
+
+L'analyse SonarQube est exécutée automatiquement par la pipeline GitHub Actions à chaque push ou pull request sur `main`. La pipeline lance les tests avec couverture, puis envoie les résultats à Sonar.
+
+Secret à configurer dans GitHub (Settings > Secrets and variables > Actions) :
+
+| Secret | Valeur |
+|--------|--------|
+| `SONAR_TOKEN` | Token d'authentification SonarQube |
+
+### En local
+
+Copiez le template et renseignez votre token :
+```shell
+cp sonar-project.properties.template sonar-project.properties
+# Éditez sonar-project.properties pour renseigner sonar.token
+```
+
+Puis lancez les tests et l'analyse en une commande :
 ```shell
 ./sonar.sh
 ```
-Note : peut être chmod +x le fichier shell d'abord.
 
 Prérequis : `sonar-scanner` doit être installé et accessible dans le PATH.
 
