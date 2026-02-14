@@ -6,6 +6,7 @@ Gestionnaire de tâches minimaliste en Python. Permet de créer, modifier, suppr
 
 ```
 src/
+  cli.py          # Client en ligne de commande (menu interactif)
   models/
     Task.py       # Modèle d'une tâche (nom, description, statut)
     TaskList.py   # Collection de tâches avec persistance JSON
@@ -24,6 +25,12 @@ Voir le diagramme de classes dans [uml.md](uml.md).
 
 - **Task** : représente une tâche avec un nom, une description et un statut (fait/non fait). Sérialisable en JSON. L'égalité entre deux tâches est déterminée par leur nom et leur description.
 - **TaskList** : gère une collection de `Task`. Fournit la persistance vers/depuis un fichier JSON.
+
+## Utilisation
+
+```shell
+python -m src.cli
+```
 
 ## Setup
 
